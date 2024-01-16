@@ -2,19 +2,17 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import User from './models/User.js';
+import dotenv from 'dotenv';
 
 const app = express();
+dotenv.config();
 
 app.use(cors());
 app.use(express.json()); 
 app.use(express.urlencoded({extended: false}));
 
-app.post('/adduser', async (req, res) => {
-    const user = req.body;
-    const result = await User.create(user);
-    res.send(result);
-});
+const PORT = process.env.PORT || 8080;
 
-mongoose.connect("mongodb+srv://shahar:12345@e-shop.r1l6bex.mongodb.net/e-shop-amazon-project?retryWrites=true&w=majority")
-.then(() => app.listen(5000, () => console.log(`Listening on ${5000}`)))
-.catch(err => console.error(err));
+mongoose.connect(process.env.MONGO_CONNECTION_STRING)
+.then(() => app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`)))
+.catch(err => console.error(err.message));
