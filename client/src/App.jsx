@@ -1,14 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";
+import Title from "./components/title";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-  
+      <div>
+        <Title title="e-shop-amazon-project" />
+        Hello World !
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
