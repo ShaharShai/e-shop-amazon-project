@@ -136,3 +136,12 @@ body {
     background-color: #f0c040 !important;
     color: #000000 !important;
   }
+
+
+  .product-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+  }
+
