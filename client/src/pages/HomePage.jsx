@@ -5,22 +5,22 @@ import axios from "axios";
 import Loading from "../components/shared/Loading";
 import MessageBox from "../components/shared/MessageBox";
 import Products from "../components/HomePage/Products";
+import { GET_REQUEST, GET_SUCCESS, GET_FAIL } from "../actions";
 
 const initialState = { loading: true, error: "", data: [] };
 
 function HomePage() {
 
-  const [state, dispatch] = useReducer(homePageReducer, initialState);
-  const { loading, error, data } = state; 
+  const [{ loading, error, data }, dispatch] = useReducer(homePageReducer, initialState);
 
   useEffect(() => {
      const getProducts = async () => {
-       dispatch({type: "GET_REQUEST"});
+       dispatch({type: GET_REQUEST});
        try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/products");
-        dispatch({type: "GET_SUCCESS", payload: data});
+        const { data } = await axios.get("/api/v1/products");
+        dispatch({type: GET_SUCCESS, payload: data});
        } catch (err) {
-        dispatch({type: "GET_FAIL", payload: err.message});
+        dispatch({type: GET_FAIL, payload: err.message});
        }
      }
 
