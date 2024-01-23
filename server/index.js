@@ -5,6 +5,8 @@ import User from './models/User.js';
 import dotenv from 'dotenv';
 import seedRouter from './routes/seedRouter.js';
 import productRouter from './routes/productRouter.js';
+import userRouter from './routes/userRouter.js';
+
 
 const app = express();
 dotenv.config();
@@ -21,6 +23,7 @@ app.use((err, req, res, next) => {
 })
 
 app.use("/api/v1/products", productRouter);
+app.use("/api/v1/users", userRouter);
 
 mongoose.connect(process.env.MONGO_CONNECTION_STRING)
 .then(() => app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`)))
