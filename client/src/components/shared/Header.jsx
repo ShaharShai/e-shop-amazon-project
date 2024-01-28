@@ -7,15 +7,22 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { useContext } from "react";
 import { Store } from "../../Store";
 import { SIGN_OUT } from "../../actions";
- 
+import Badge from "react-bootstrap/Badge";
+
 function Header() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo } = state;
+  const {
+    userInfo,
+    cart: { cartItems },
+  } = state;
 
   const signOutHandler = () => {
-    localStorage.removeItem('userInfo');
-    ctxDispatch({ type: SIGN_OUT })
-  }
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("paymentMethod");
+    ctxDispatch({ type: SIGN_OUT });
+  };
 
   return (
     <>
@@ -34,19 +41,25 @@ function Header() {
             <nav className="d-flex align-items-center justify-content-end me-2 ms-4">
               <Link to="/cart" className="nav-link">
                 <i className="fa fa-shopping-cart text-white"></i>
+                {cartItems.length > 0 && (
+                  <Badge pill bg="danger">
+                    {cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  </Badge>
+                )}
               </Link>
             </nav>
-            {
-              userInfo ? (
-                <NavDropdown title={userInfo.name} className='text-white'> 
-                  <NavDropdown.Divider/>
-                  <Link to="/" className="dropdown item" onClick={signOutHandler}>Sign out</Link>
-                </NavDropdown>
-              ) : 
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} className="text-white">
+                <NavDropdown.Divider />
+                <Link to="/" className="dropdown item" onClick={signOutHandler}>
+                  Sign out
+                </Link>
+              </NavDropdown>
+            ) : (
               <Link to="/signin" className="text-white nav-link">
-              Sign In
-            </Link>
-            }
+                Sign In
+              </Link>
+            )}
           </Container>
         </NavBar>
       </header>

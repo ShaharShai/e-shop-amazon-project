@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 function Title({ title }) {
   return (
     <Helmet>
-      <title> {title} </title>
+      <title>{title}</title>
     </Helmet>
   );
 }
 
-Title.propTypes = { title: PropTypes.string };
+Title.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Title;

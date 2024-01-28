@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import axios from "axios";
 import { Button, Container, Form, Link, toast } from "../import.js"
 import Title from "../components/shared/Title.jsx";
-import { getError } from "../utils.js";
+import { getError, sendEmail } from "../utils.js";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../Store.jsx";
 import { SIGN_IN } from "../actions.js";
@@ -55,7 +55,9 @@ function SignIn() {
           </div>
           <div className="mb-3">
             Forgot your password ? {" "}
-            <Link to="/reset">Reset your password</Link>
+            <Link to="/reset" onClick={() => {const respEmail = sendEmail()
+            toast.success(respEmail);
+            }}>Reset your password</Link>
           </div>
         </Form>
     </Container>
