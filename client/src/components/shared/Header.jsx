@@ -36,6 +36,7 @@ function Header() {
                   width={80}
                 />
               </NavBar.Brand>
+              
             </LinkContainer>
             <SearchBox />
             <nav className="d-flex align-items-center justify-content-end me-2 ms-4">
