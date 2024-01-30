@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import SignUp from "./pages/SignUp";
 import Description from "./pages/Description";
 import ResetPassword from "./pages/ResetPassword";
+import Cart from "./pages/Cart";
+import Shipping from "./pages/Shipping";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/products/:token" element={<Description />} />
               <Route path="/reset-password/:token" element={<ResetPassword/>} />
+              <Route path="/cart" element={<Cart/>} />
+              <Route path="/shipping" element={<Shipping/>} />
             </Routes>
           </Container>
         </main>

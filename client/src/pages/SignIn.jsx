@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Container, Form, Link, toast } from "../import.js";
 import Title from "../components/shared/Title.jsx";
 import { getError, sendEmail } from "../utils.js";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Store } from "../Store.jsx";
 import { SIGN_IN } from "../actions.js";
 
@@ -12,7 +12,21 @@ function SignIn() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const { dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
+
+  const { search } = useLocation();
+  const redirectUrl = new URLSearchParams(search);
+
+  const redirectValue = redirectUrl.get("redirect");
+
+  const redirect = redirectValue ? redirectValue : "/";
+
+  useEffect(() => {
+      if(userInfo) {
+        navigate(redirect);
+      }
+  }, [navigate, userInfo, redirect]) 
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -23,7 +37,7 @@ function SignIn() {
       });
       ctxDispatch({ type: SIGN_IN, payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
-      navigate("/");
+      navigate(redirect);
       toast.success(`Welcome ${data.name} !`);
     } catch (err) {
       toast.error(getError(err));
@@ -33,7 +47,9 @@ function SignIn() {
   const resetButtonHandler = async () => {
     if (email) {
       try {
-        const { data } = await axios.post(`/api/v1/reset/request-reset`, { email });
+        const { data } = await axios.post(`/api/v1/reset/request-reset`, {
+          email,
+        });
         toast.success(data.message);
       } catch (error) {
         console.log(error);
@@ -43,6 +59,7 @@ function SignIn() {
       toast.error("Please enter your email !");
     }
   };
+  
 
   return (
     <Container className="small-container">
@@ -72,15 +89,11 @@ function SignIn() {
           </Button>
         </div>
         <div className="mb-3">
-          New customer ? <Link to="/signup">Create your account</Link>
+          New customer ? <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
         </div>
         <div className="mb-3">
           Forgot your password ?{" "}
-          <Link
-            onClick={resetButtonHandler}
-          >
-            Reset your password
-          </Link>
+          <Link onClick={resetButtonHandler}>Reset your password</Link>
         </div>
       </Form>
     </Container>
