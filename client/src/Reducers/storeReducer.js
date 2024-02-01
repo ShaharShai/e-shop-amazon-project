@@ -1,6 +1,8 @@
 import {
   ADD_PRODUCT,
+  CLEAR_CART,
   REMOVE_FROM_CART,
+  SAVE_PAYMENT_METHOD,
   SAVE_SHIPPING_ADDRESS,
   SIGN_IN,
   SIGN_OUT,
@@ -44,6 +46,14 @@ const storeReducer = (state, action) => {
       const shippingAddress = action.payload;
       localStorage.setItem("shippingAddress", JSON.stringify(shippingAddress));
       return { ...state, cart: { ...state.cart, shippingAddress: shippingAddress } };
+    }
+
+    case SAVE_PAYMENT_METHOD: {
+      return { ...state, cart: { ...state.cart, paymentMethod: action.payload} };
+    }
+
+    case CLEAR_CART: {
+      return { ...state,cart: { cartItems: [], shippingAddress: {}, paymentMethod: "" }}
     }
 
     default:

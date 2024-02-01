@@ -58,7 +58,7 @@ const Shipping = () => {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Country:</Form.Label>
-          <Form.Control name="Country" required />
+          <Form.Control name="country" required />
         </Form.Group>
         <div className="mb-3">
            <Button variant="primary" type="submit">Submit</Button> 

@@ -12,6 +12,8 @@ import Description from "./pages/Description";
 import ResetPassword from "./pages/ResetPassword";
 import Cart from "./pages/Cart";
 import Shipping from "./pages/Shipping";
+import Payment from "./pages/Payment";
+import SubmitOrder from "./pages/SubmitOrder";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
               <Route path="/reset-password/:token" element={<ResetPassword/>} />
               <Route path="/cart" element={<Cart/>} />
               <Route path="/shipping" element={<Shipping/>} />
+              <Route path="/payment" element={<Payment/>} />
+              <Route path="/placeorder" element={<SubmitOrder/>} />
             </Routes>
           </Container>
         </main>
