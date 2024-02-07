@@ -7,7 +7,7 @@ import { addToCartHandler, getError } from "../utils";
 import axios from "axios";
 import Loading from "../components/shared/Loading.jsx";
 import MessageBox from "../components/shared/MessageBox.jsx";
-import { Col, Row } from "../import.js";
+import { Col, Row } from "../imports.js";
 import ProductDescription from "../components/DescriptionPage/ProductDescription.jsx";
 import Title from "../components/shared/Title.jsx";
 import CartDescription from "../components/DescriptionPage/CartDescription.jsx";

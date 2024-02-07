@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Container, Form, Link, toast } from "../import.js";
+import { Button, Container, Form, Link, toast } from "../imports.js";
 import Title from "../components/shared/Title.jsx";
-import { getError, sendEmail } from "../utils.js";
+import { getError } from "../utils.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Store } from "../Store.jsx";
 import { SIGN_IN } from "../actions.js";

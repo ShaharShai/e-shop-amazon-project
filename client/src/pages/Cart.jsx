@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Store } from "../Store";
 import Title from "../components/shared/Title";
-import { Col, Row, axios, toast } from "../import";
+import { Col, Row, axios, toast } from "../imports";
 import ItemsInCart from "../components/CartPage/ItemsInCart";
 import Checkout from "../components/CartPage/Checkout";
 import { ADD_PRODUCT, REMOVE_FROM_CART } from "../actions";

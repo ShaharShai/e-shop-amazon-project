@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { SAVE_PAYMENT_METHOD } from '../actions';
 import Title from '../components/shared/Title';
 import CheckoutSteps from '../components/shared/CheckoutSteps';
-import { Button, Form } from '../import';
+import { Button, Form } from '../imports';
 import { Store } from '../Store';
 
 function Payment() {

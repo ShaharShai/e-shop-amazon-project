@@ -1,4 +1,4 @@
-import { Button, Card, Col, ListGroup, PropTypes, Row } from "../../import"
+import { Button, Card, Col, ListGroup, PropTypes, Row } from "../../imports"
 import Loading from "./Loading"
 
 const PaymentSummary = ({ loading, cart, status, submitOrderHandler }) => {

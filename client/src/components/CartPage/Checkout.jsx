@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, ListGroup, PropTypes } from "../../import";
+import { Button, Card, ListGroup, PropTypes } from "../../imports";
 
 function Checkout({ cartItems, checkoutHandler }) {
   return (

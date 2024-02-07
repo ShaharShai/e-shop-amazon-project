@@ -1,5 +1,5 @@
 import ListGroup from "react-bootstrap/ListGroup";
-import { PropTypes } from "../../import";
+import { PropTypes } from "../../imports";
 import Rating from "../shared/Rating";
 
 function ProductDescription({ title, rating, price, description }) {

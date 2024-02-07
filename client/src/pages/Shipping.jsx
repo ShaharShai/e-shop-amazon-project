@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
 import Title from "../components/shared/Title";
 import CheckoutSteps from "../components/shared/CheckoutSteps";
-import { Button, Container, Form } from "../import";
+import { Button, Container, Form } from "../imports";
 import { SAVE_SHIPPING_ADDRESS } from "../actions";
 
 const Shipping = () => {

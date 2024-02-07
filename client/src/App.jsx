@@ -14,6 +14,7 @@ import Cart from "./pages/Cart";
 import Shipping from "./pages/Shipping";
 import Payment from "./pages/Payment";
 import SubmitOrder from "./pages/SubmitOrder";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -28,11 +29,12 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/products/:token" element={<Description />} />
-              <Route path="/reset-password/:token" element={<ResetPassword/>} />
-              <Route path="/cart" element={<Cart/>} />
-              <Route path="/shipping" element={<Shipping/>} />
-              <Route path="/payment" element={<Payment/>} />
-              <Route path="/placeorder" element={<SubmitOrder/>} />
+              <Route path="/reset-password/:token" element={<ResetPassword />}/>
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/shipping" element={<Shipping />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/placeorder" element={<SubmitOrder />} />
+              <Route path="/search" element={<Search />}></Route>
             </Routes>
           </Container>
         </main>

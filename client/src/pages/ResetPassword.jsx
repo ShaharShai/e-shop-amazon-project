@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { toast } from "../import.js"
+import { toast } from "../imports.js"
 
 function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");

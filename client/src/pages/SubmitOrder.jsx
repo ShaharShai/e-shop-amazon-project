@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getError } from "../utils";
 import { toast } from "react-toastify";
 import Title from "../components/shared/Title";
-import { Col, Row, axios } from "../import";
+import { Col, Row, axios } from "../imports";
 import OrderSummary from "../components/shared/OrderSummary";
 import CheckoutSteps from "../components/shared/CheckoutSteps";
 import PaymentSummary from "../components/shared/PaymentSummary";

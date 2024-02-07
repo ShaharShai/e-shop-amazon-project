@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { Button, Container, Form, axios, toast } from "../import";
+import { Button, Container, Form, axios, toast } from "../imports";
 import Title from "../components/shared/Title";
 import { getError } from "../utils";
 import { Link, useLocation, useNavigate } from "react-router-dom";

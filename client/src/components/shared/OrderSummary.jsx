@@ -1,4 +1,4 @@
-import { Card, Col, Link, ListGroup, PropTypes, Row } from "../../import";
+import { Card, Col, Link, ListGroup, PropTypes, Row } from "../../imports";
 import MessageBox from "./MessageBox";
 
 const OrderSummary = ({ cart, status, isDelivered }) => {

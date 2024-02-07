@@ -2,30 +2,45 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getFilterURL } from "../../utils";
 
-function SearchBox() {
+const SearchBox = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+  const { search } = useLocation();
+  useEffect(() => {
+    if (!query) {
+      return;
+    }
+    const filterURI = getFilterURL(search, { query: query });
+    navigate(filterURI);
+  }, [query]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const filterURI = getFilterURL(search, { query: query });
+    navigate(filterURI);
+  };
+
   return (
-    <Form className="d-flex me-auto w-50">
+    <Form className="d-flex me-auto w-50" onSubmit={submitHandler}>
       <InputGroup>
         <FormControl
+          onChange={(e) => setQuery(e.target.value)}
           type="text"
           name="q"
           id="q"
-          placeholder="Search For a Product"
+          placeholder="Search for products"
           aria-describedby="button-search"
-        />
-        <Button
-          id="button-search"
-          style={{
-            transition: "0.2s",
-            ":hover": { variant: "outline-warning" },
-          }}
-        >
+        ></FormControl>
+        <Button variant="outline-primary" id="button-search" type="submit">
           <i className="fa fa-search"></i>
         </Button>
       </InputGroup>
     </Form>
   );
-}
+};
 
 export default SearchBox;

@@ -1,4 +1,4 @@
-import { Col, PropTypes, Row } from "../../import";
+import { Col, PropTypes, Row } from "../../imports";
 
 function CheckoutSteps({ step1, step2, step3, step4 }) {
   return (

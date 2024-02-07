@@ -1,4 +1,4 @@
-import { Button, Col, Link, ListGroup, PropTypes, Row } from "../../import";
+import { Button, Col, Link, ListGroup, PropTypes, Row } from "../../imports.js";
 import MessageBox from "../shared/MessageBox.jsx";
 
 function ItemsInCart({ cartItems, updateCartHandler, removeCartItemHandler }) {
