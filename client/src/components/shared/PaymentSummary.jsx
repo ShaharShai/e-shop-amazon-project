@@ -1,7 +1,40 @@
+import { useEffect, useRef } from "react"
 import { Button, Card, Col, ListGroup, PropTypes, Row } from "../../imports"
 import Loading from "./Loading"
 
-const PaymentSummary = ({ loading, cart, status, submitOrderHandler }) => {
+const PaymentSummary = ({ loading, cart, status, submitOrderHandler, paymentMethod }) => {
+
+    const paypal = useRef();
+
+  useEffect(() => {
+
+    if (status === "submitOrder" && paymentMethod === "PayPal"){
+        
+     window.paypal.Buttons({
+        createOrder: (data, actions, err) => {
+            return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [
+                    {
+                        description: "Product",
+                        amount: {
+                            currency_code: "USD",
+                            value: 10.00
+                        }
+                    }
+                ]
+            })
+        },
+        onApprove: async (data, actions) => {
+            const order = await (actions.order.capture);
+            console.log(order);
+        },
+        onError: (err) => {
+            console.log(err);
+        }
+     }).render(paypal.current)}
+  }, [status, paymentMethod])
+
   return (
     <>
     <Card>
@@ -37,8 +70,12 @@ const PaymentSummary = ({ loading, cart, status, submitOrderHandler }) => {
                     </Row>
                 </ListGroup.Item>
             </ListGroup>
-            {
-                status === "submitOrder" && <Button variant="primary" onClick={submitOrderHandler}>Submit</Button>
+            {          
+                status === "submitOrder" &&  paymentMethod === "PayPal" ? (
+                    // <Button variant="primary" onClick={submitOrderHandler}>Checkout</Button>
+                    <div ref={paypal}></div>
+                ) :
+                <Button variant="primary" onClick={submitOrderHandler}>Submit</Button>
             }
             {loading && <Loading />}
         </Card.Body>

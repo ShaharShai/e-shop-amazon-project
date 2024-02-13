@@ -86,10 +86,9 @@ const requestPasswordReset = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-   const { token } = req.body;
+   const { token, newPassword } = req.body;
    
    const tokenDoc = await ResetToken.findOne({ token });
-   const { newPassword } = req.body;
 
    if (!tokenDoc || tokenDoc.expirationDate < new Date()) {
     return res.status(400).json({ success: false, message: 'Invalid or expired token.' });

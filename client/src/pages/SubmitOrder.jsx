@@ -39,7 +39,8 @@ const SubmitOrder = () => {
       });
       ctxDispatch({ type: CLEAR_CART })
       localStorage.removeItem("cartItems");
-      navigate(`/order/${data.order._id}`);
+      // navigate(`/order/${data.order._id}`);
+      
     } catch (error) {
       toast.error(getError(error));
     } finally {
@@ -60,7 +61,7 @@ const SubmitOrder = () => {
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
   return (
-    <div>
+    <div>      
       <Title title="Order Summary" />
       <CheckoutSteps step1 step2 step3 step4 />
       <h1 className="my-3">Order Summary</h1>
@@ -79,6 +80,7 @@ const SubmitOrder = () => {
             submitOrderHandler={submitOrderHandler}
             status={"submitOrder"}
             cart={cart}
+            paymentMethod={cart.paymentMethod}
           />
         </Col>
       </Row>

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "../imports.js"
 
 function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");
   const { token } = useParams();
+  const navigate = useNavigate();
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ function ResetPassword() {
       console.log(data);
       if (data.success) {
         toast.success(data.message);
+        navigate("/signin");
       } else {
         toast.warn(data.message);
       }

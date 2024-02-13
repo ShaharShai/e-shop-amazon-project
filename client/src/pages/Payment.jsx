@@ -46,7 +46,7 @@ function Payment() {
                             onChange={(e) => setPaymentMethodName(e.target.value)} />
                     </div>
                     <div className="mb-3">
-                        <Form.Check type='radio' id='Stripe' label='Stripe' value='Stripe' checked={paymentMethodName === 'Stripe'}
+                        <Form.Check type='radio' disabled={true} id='Stripe' label='Stripe - coming soon' value='Stripe' checked={paymentMethodName === 'Stripe'}
                             onChange={(e) => setPaymentMethodName(e.target.value)} />
                     </div>
                     <div className="mb-3">

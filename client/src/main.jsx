@@ -11,11 +11,11 @@ import { StoreProvider } from "./Store.jsx";
 axios.defaults.baseURL = "http://localhost:5000";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <StoreProvider>
       <HelmetProvider>
         <App />
       </HelmetProvider>
     </StoreProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
