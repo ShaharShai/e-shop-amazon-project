@@ -20,7 +20,7 @@ function Description() {
     initialState
   );
 
-  const URL = "http://localhost:5000";
+  // const URL = "http://localhost:5000";
   const params = useParams();
   const { token } = params;
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Description() {
       dispatch({ type: GET_REQUEST });
       try {
         const { data } = await axios.get(
-          `${URL}/api/v1/products/token/${token}`
+          `/api/v1/products/token/${token}`
         );
 
         dispatch({ type: GET_SUCCESS, payload: data });
