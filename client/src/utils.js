@@ -2,7 +2,7 @@ import axios from "axios";
 import { ADD_PRODUCT } from "./actions";
 
 
-const URL = "http://localhost:5000";
+// const URL = "http://localhost:5000";
 
 const getError = (err) => {
   return err.message && err.response.data.message
@@ -18,7 +18,7 @@ const addToCartHandler = async (product, cartItems, ctxDispatch) => {
 
   try {
     const {data} = await axios.get(
-      `${URL}/api/v1/products/${product._id}`
+      `/api/v1/products/${product._id}`
     );
   
     if (data.countInStock < quantity) {
